@@ -15,15 +15,11 @@ nunjucks.configure("views", {
 app.set("views", __dirname + "/views");
 app.set("view engine", "njk");
 
-app.get("/", function(request, result) {
-  result.render("home");
-});
-
 app.listen(port, function () {
   console.log("Server listening on port:" + 3000);
 });
 
-app.get("/categories", function(request, result) {
+app.get("/", function(request, result) {
   product.categoriesImport("categories")
   .then(categoriesDkt => {
     result.render("categories", {categories : categoriesDkt})
